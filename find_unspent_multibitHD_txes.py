@@ -195,6 +195,7 @@ def load_wallet(wallet_file, get_password_fn):
     for wkey in pb_wallet.key:
       if wkey.type == 3:
         seed = aes256_cbc_decrypt(wkey.encrypted_deterministic_seed.encrypted_private_key, dkey, wkey.encrypted_deterministic_seed.initialisation_vector)
+        print("Seed (HEX):", seed.encode("hex"))
         break
         
     if not seed:
